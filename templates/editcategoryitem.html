@@ -1,0 +1,31 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<form action="{{ url_for('editCategoryItem',url_category_id = url_category_id, url_item_id=item.item_id)}}" method='post'>
+		<h3>Edit {{item.item_name}}</h3>
+		<dl>
+			<dt>Name:</dt>
+			<dd>
+				<input type='text' size='30' name='name' placeholder='{{item.item_name }}'>
+			</dd>
+			<dt>Description:</dt>
+			<dd>
+				<textarea name='description' rows='5' cols='40' placeholder='{{item.description }}'></textarea>
+			</dd>
+			<dt>Author:</dt>
+			<dd>
+				<input type='text' size='8' name='producer' placeholder='{{item.producer}}'>
+			</dd>
+			<dt>Price:</dt>
+			<dd>
+				<input type='text' size='8' name='price' placeholder='{{item.price}}'>
+			</dd>
+
+		</dl>
+
+
+		<input type='submit' value='Edit'>
+
+		<a href="{{url_for('categoryItemList', url_category_id= item.itm_cat_id)}}">Cancel</a>
+	</form>
+{% endblock %}

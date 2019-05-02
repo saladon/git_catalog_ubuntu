@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+			<h3>{{ category.category_name }}</h3>
+			<p>
+				<a href="{{url_for('newCategoryItem', url_category_id = category.category_id) }}">Create New Item</a>
+			</p>
+			<p>
+				<a href="{{url_for('categoryList')}}">Back</a>
+			</p>
+		
+		{% for i in items %}
+		<div class="item_box">
+			<p>Title: {{i.item_name}}, Created by: {{i.producer}}, Price: ${{i.price}}</p>
+
+			<p>{{i.description}}</p>
+
+				<a class="btn btn-xs btn-default" href="{{url_for('editCategoryItem', url_category_id = category.category_id, url_item_id = i.item_id)}}">
+						<span class="glyphicon glyphicon-wrench"></span></a>
+				<a class="btn btn-xs btn-default" href="{{url_for('deleteCategoryItem', url_category_id = category.category_id, url_item_id = i.item_id)}}">
+						<span class="glyphicon glyphicon-remove"></span></a>
+		</div>
+
+		{% endfor %}
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<p>Result: {{categories|length}} Categories</p>
+	<h2 class="page-header btn btn-default btn-block">
+		<a href="{{url_for('newCategory')}}">New Category</a>
+	</h2>
+	
+
+	<ul class="list-group">
+		{% for category in categories %}
+		<li class="list-group-item" >
+			<a href="{{url_for('categoryItemList', url_category_id = category.category_id)}}">{{category.category_name}}</a>
+			<a class="btn btn-xs btn-default" href="{{url_for('editCategory', url_category_id = category.category_id)}}">
+				<span class="glyphicon glyphicon-wrench"></span></a>
+			<a class="btn btn-xs btn-default" href="{{url_for('deleteCategory', url_category_id = category.category_id)}}">
+				<span class="glyphicon glyphicon-remove"></span></a>
+		</li>
+		{% endfor %}
+	</ul>
+
+{% endblock %}

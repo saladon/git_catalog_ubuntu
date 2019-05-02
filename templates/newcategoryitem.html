@@ -1,0 +1,32 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}	
+		<form action="{{ url_for('newCategoryItem', url_category_id=url_category_id )}}" method='post'>
+				<h3>New Category Item for {{category.category_name}}</h3>
+			
+			<dl>
+				<dt>Name</dt>
+				<dd>
+					<input type='text' size='30' name='name'>
+				</dd>
+				<dt>Description</dt>
+				<dd>
+					<textarea name='description' rows='5' cols='40'> </textarea>
+				</dd>
+				<dt>Author</dt>
+				<dd>
+					<input type='text' size='30' name='producer'>
+				</dd>
+				<dt>Price</dt>
+				<dd>
+					<input type='text' size='8' name='price'>
+				</dd>
+
+			</dl>
+
+
+			<input type='submit' value='Create'>
+
+		</form>
+		<a href="{{url_for('categoryItemList', url_category_id= url_category_id)}}">Cancel</a>
+{% endblock %}
